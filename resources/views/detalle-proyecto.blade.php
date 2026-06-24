@@ -157,6 +157,19 @@
     .technical-divider {
         background: linear-gradient(90deg, #d5d5db 0%, transparent 100%);
     }
+
+    .py-stack-md {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    .gap-gutter {
+        gap: 32px !important;
+    }
+
+    .max-w-container-max {
+        max-width: 1280px;
+    }
 </style>
 @section('content')
 

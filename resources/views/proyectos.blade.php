@@ -161,6 +161,19 @@
         background-color: #002e49;
         color: white;
     }
+
+    .py-stack-md {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    .gap-gutter {
+        gap: 32px !important;
+    }
+
+    .max-w-container-max {
+        max-width: 1280px;
+    }
 </style>
 @section('content')
 
@@ -181,17 +194,35 @@
     <section class="py-lg border-b border-outline-variant bg-surface sticky top-20 z-40">
         <div class="max-w-max-width mx-auto px-margin-desktop">
             <div class="flex flex-wrap items-center gap-md">
-                <span
-                    class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mr-sm">Filtrar
-                    por:</span>
-                <button
-                    class="filter-btn active px-lg py-xs border border-outline font-label-md text-label-md rounded-full transition-all">Todos</button>
-                <button
-                    class="filter-btn px-lg py-xs border border-outline font-label-md text-label-md rounded-full hover:border-primary hover:text-primary transition-all">Geotecnia</button>
-                <button
-                    class="filter-btn px-lg py-xs border border-outline font-label-md text-label-md rounded-full hover:border-primary hover:text-primary transition-all">Laboratorio</button>
-                <button
-                    class="filter-btn px-lg py-xs border border-outline font-label-md text-label-md rounded-full hover:border-primary hover:text-primary transition-all">Calibración</button>
+
+                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mr-sm">
+                    Filtrar por:
+                </span>
+
+                <a href="{{ route('proyectos') }}"
+                class="filter-btn px-lg py-xs border rounded-full
+                {{ empty(request('taxonomy')) ? 'active' : '' }}">
+                    Todos
+                </a>
+
+                <a href="{{ route('proyectos',['taxonomy'=>'Geotecnia']) }}"
+                class="filter-btn px-lg py-xs border rounded-full
+                {{ request('taxonomy') == 'Geotecnia' ? 'active' : '' }}">
+                    Geotecnia
+                </a>
+
+                <a href="{{ route('proyectos',['taxonomy'=>'Laboratorio']) }}"
+                class="filter-btn px-lg py-xs border rounded-full
+                {{ request('taxonomy') == 'Laboratorio' ? 'active' : '' }}">
+                    Laboratorio
+                </a>
+
+                <a href="{{ route('proyectos',['taxonomy'=>'Calibración']) }}"
+                class="filter-btn px-lg py-xs border rounded-full
+                {{ request('taxonomy') == 'Calibración' ? 'active' : '' }}">
+                    Calibración
+                </a>
+
             </div>
         </div>
     </section>
@@ -199,26 +230,25 @@
     <section class="py-xxl">
         <div class="max-w-max-width mx-auto px-margin-desktop">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl">
-                <!-- Project Item 1 -->
+                @foreach($projects as $project)
                 <div
                     class="project-card relative group overflow-hidden bg-surface border border-outline-variant h-[450px]">
                     <div class="h-full w-full overflow-hidden">
                         <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
                             data-alt="A large-scale industrial construction site featuring heavy machinery and deep excavation for foundation work. The scene is captured in clear daylight with a focus on engineering precision and structural steel. The color palette is dominated by cool blues and metallic grays, reflecting a professional and reliable technical environment."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPaxPUHTIPzwJSHLKUKhRPIFcs-r-hXfazS2uGqhOBwO_XfQh9QsoJp6vO2WwNM4oqA5zlfaktcgfMK_sQ8Gn4gv-wKM3RTx4LZwzdOVL9Ey_RMRccufdLOfSbD9eEo83dAutyNPSRA8u3r5_NUZriA_WIjFd4OcBAjMARecYDV9YDzUCeevX1bjWKRkZk_igGcBSNkMzeS2kOdFe0lD0AuPh_U5GlAuYYKH_9o6l6pTKsFhnQBaqsHfLskCm9ZjdjksVGzJU_i8CA" />
+                            src="{{asset('storage/' . $project->imagen)}}" />
                     </div>
                     <div
                         class="absolute bottom-0 left-0 right-0 p-lg bg-surface/90 backdrop-blur-sm border-t border-outline-variant">
                         <div class="flex justify-between items-start mb-xs">
                             <span
                                 class="font-label-sm text-label-sm text-secondary uppercase tracking-tighter">Geotecnia</span>
-                            <span class="font-label-sm text-label-sm text-on-surface-variant">2023</span>
+                            <span class="font-label-sm text-label-sm text-on-surface-variant">{{$project->anio}}</span>
                         </div>
-                        <h3 class="font-headline-sm text-headline-sm text-primary mb-xs">Estudio de Suelos Planta
-                            Industrial</h3>
+                        <h3 class="font-headline-sm text-headline-sm text-primary mb-xs">{{$project->nombre}}</h3>
                         <div class="flex items-center gap-xs text-on-surface-variant">
                             <span class="material-symbols-outlined text-[18px]">location_on</span>
-                            <span class="font-body-sm text-body-sm">Callao, Perú</span>
+                            <span class="font-body-sm text-body-sm">{{$project->ubicacion}}</span>
                         </div>
                     </div>
                     <!-- Hover Overlay -->
@@ -226,8 +256,7 @@
                         class="project-overlay absolute inset-0 bg-primary/95 flex flex-col justify-center p-xl opacity-0 translate-y-4 transition-all duration-500 ease-out">
                         <h4 class="text-white font-headline-sm text-headline-sm mb-md">Detalles Técnicos</h4>
                         <p class="text-white/80 font-body-md text-body-md mb-lg">
-                            Análisis de capacidad portante mediante ensayos SPT y calicatas a 15 metros de
-                            profundidad para cimentación de naves logísticas pesadas.
+                            {{$project->descripcion}}
                         </p>
                         <a href="{{route('detalle-proyecto')}}"
                             class="border border-secondary-fixed text-secondary-fixed self-start px-lg py-sm rounded-lg font-label-md text-label-md hover:bg-secondary-fixed hover:text-primary transition-colors">
@@ -235,181 +264,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- Project Item 2 -->
-                <div
-                    class="project-card relative group overflow-hidden bg-surface border border-outline-variant h-[450px]">
-                    <div class="h-full w-full overflow-hidden">
-                        <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
-                            data-alt="A clean, high-tech engineering laboratory where a technician is performing precision calibration on electronic sensors. The lighting is bright and sterile, emphasizing a modern scientific facility. The aesthetic is minimalist with white surfaces and deep blue accents, conveying accuracy and professional excellence in technical services."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkZTl3oHY-fZXverSYHAMRnkyHZHy1X3YYRK3SyZ0bQCt4t_uEBV7fICtiQ-mtnEJhbqNcrc9K46QIk8pJofdup-G0t_6-zxV-q9sCujsvOxmt1ZwY_7iwW8i1p99vLB8GByQcxZiXzRSFZLIt9eQH0FsvfuBPhRo6AU-l12vPQv_F6_bAMLhl9hG3grTkSzjKSoYPabl3QQAHh9jp0oj_hY0yh4Ynt1wWZSP-kpizrpjGx0Vhmyz_CTZoGIPTJ0rSlxXk1ep135lX" />
-                    </div>
-                    <div
-                        class="absolute bottom-0 left-0 right-0 p-lg bg-surface/90 backdrop-blur-sm border-t border-outline-variant">
-                        <div class="flex justify-between items-start mb-xs">
-                            <span
-                                class="font-label-sm text-label-sm text-secondary uppercase tracking-tighter">Calibración</span>
-                            <span class="font-label-sm text-label-sm text-on-surface-variant">2023</span>
-                        </div>
-                        <h3 class="font-headline-sm text-headline-sm text-primary mb-xs">Calibración Masiva de
-                            Manómetros</h3>
-                        <div class="flex items-center gap-xs text-on-surface-variant">
-                            <span class="material-symbols-outlined text-[18px]">location_on</span>
-                            <span class="font-body-sm text-body-sm">Pisco, Ica</span>
-                        </div>
-                    </div>
-                    <div
-                        class="project-overlay absolute inset-0 bg-primary/95 flex flex-col justify-center p-xl opacity-0 translate-y-4 transition-all duration-500 ease-out">
-                        <h4 class="text-white font-headline-sm text-headline-sm mb-md">Detalles Técnicos</h4>
-                        <p class="text-white/80 font-body-md text-body-md mb-lg">
-                            Servicio integral de calibración para 150 equipos de presión bajo norma ISO/IEC 17025 en
-                            planta de gas natural.
-                        </p>
-                        <button
-                            class="border border-secondary-fixed text-secondary-fixed self-start px-lg py-sm rounded-lg font-label-md text-label-md hover:bg-secondary-fixed hover:text-primary transition-colors">
-                            Ver Expediente
-                        </button>
-                    </div>
-                </div>
-                <!-- Project Item 3 -->
-                <div
-                    class="project-card relative group overflow-hidden bg-surface border border-outline-variant h-[450px]">
-                    <div class="h-full w-full overflow-hidden">
-                        <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
-                            data-alt="Close-up of a concrete compression test being conducted in a structural engineering laboratory. The machine is crushing a concrete cylinder with high force, displaying technical measurement data. The lighting is focused and dramatic, highlighting the texture of the materials and the precision of the scientific process."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB45hyUfaPk42FIcpk1zVWim3z0RwlKgJ4a9U5Fou24MWi4qI5ZbGMHGuwXo_lJ_D54JP18yROuZ5MUqgt9QEe-AQOxjGmCsG7AIIYVY873z0Jutet9lb3i-sNzR6b_6pbMNTn7cFLgrAIqNNutlDDEofVi3E0A5zIk7dL9vtvfhgrpJ9M9G02wMUjSz40H5QiDnAi23EnRNEh0RSfWjU7CK-MBCewffMeMjO6vsQMtqjhdMfvb23Z0kM-IJuc3-IfTCC0Gp2BOFmId" />
-                    </div>
-                    <div
-                        class="absolute bottom-0 left-0 right-0 p-lg bg-surface/90 backdrop-blur-sm border-t border-outline-variant">
-                        <div class="flex justify-between items-start mb-xs">
-                            <span
-                                class="font-label-sm text-label-sm text-secondary uppercase tracking-tighter">Laboratorio</span>
-                            <span class="font-label-sm text-label-sm text-on-surface-variant">2024</span>
-                        </div>
-                        <h3 class="font-headline-sm text-headline-sm text-primary mb-xs">Control de Calidad de
-                            Concreto</h3>
-                        <div class="flex items-center gap-xs text-on-surface-variant">
-                            <span class="material-symbols-outlined text-[18px]">location_on</span>
-                            <span class="font-body-sm text-body-sm">Miraflores, Lima</span>
-                        </div>
-                    </div>
-                    <div
-                        class="project-overlay absolute inset-0 bg-primary/95 flex flex-col justify-center p-xl opacity-0 translate-y-4 transition-all duration-500 ease-out">
-                        <h4 class="text-white font-headline-sm text-headline-sm mb-md">Detalles Técnicos</h4>
-                        <p class="text-white/80 font-body-md text-body-md mb-lg">
-                            Ensayos de resistencia a la compresión y diseño de mezclas especiales para edificio
-                            multifamiliar de 25 pisos con sótanos profundos.
-                        </p>
-                        <button
-                            class="border border-secondary-fixed text-secondary-fixed self-start px-lg py-sm rounded-lg font-label-md text-label-md hover:bg-secondary-fixed hover:text-primary transition-colors">
-                            Ver Expediente
-                        </button>
-                    </div>
-                </div>
-                <!-- Project Item 4 -->
-                <div
-                    class="project-card relative group overflow-hidden bg-surface border border-outline-variant h-[450px]">
-                    <div class="h-full w-full overflow-hidden">
-                        <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
-                            data-alt="Technical drawing and blueprints of a bridge structure laid out on a professional workstation with engineering tools. The focus is sharp on the complex geometric lines and measurements. The lighting is even and soft, providing a clean corporate modernist atmosphere with deep blue and white tones."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYxugUxMMFi5ula6uukXIQAHko6AdR9393GDfV9Hiic2GJDlVDax5h7Hw4eCVgD5nYQ1Gx1YRwKVJiE3_R9rvYrIFeeVwlDe0vQNaVeHQYBwqjxqbabJ3UPGbu3PAjckR6vzRpu4IlK9NoHJ3b8rpwfktfRQEDNBZjsjtJ6l2QbSleRqJ_E4AAlr_OF2gwkusVW8Y_m0PmBaC1DDrH3w531jsQmwKIH4vfT9CFUjaBqKQoRlawP_zRkqwmL2wzWhnAU5QQ4zTeGWie" />
-                    </div>
-                    <div
-                        class="absolute bottom-0 left-0 right-0 p-lg bg-surface/90 backdrop-blur-sm border-t border-outline-variant">
-                        <div class="flex justify-between items-start mb-xs">
-                            <span
-                                class="font-label-sm text-label-sm text-secondary uppercase tracking-tighter">Geotecnia</span>
-                            <span class="font-label-sm text-label-sm text-on-surface-variant">2022</span>
-                        </div>
-                        <h3 class="font-headline-sm text-headline-sm text-primary mb-xs">Cimentaciones Puente
-                            Carretero</h3>
-                        <div class="flex items-center gap-xs text-on-surface-variant">
-                            <span class="material-symbols-outlined text-[18px]">location_on</span>
-                            <span class="font-body-sm text-body-sm">Cajamarca, Perú</span>
-                        </div>
-                    </div>
-                    <div
-                        class="project-overlay absolute inset-0 bg-primary/95 flex flex-col justify-center p-xl opacity-0 translate-y-4 transition-all duration-500 ease-out">
-                        <h4 class="text-white font-headline-sm text-headline-sm mb-md">Detalles Técnicos</h4>
-                        <p class="text-white/80 font-body-md text-body-md mb-lg">
-                            Perforación diamantina en roca y ensayos in-situ para el diseño de estribos y pilares
-                            centrales de puente de 80 metros de luz.
-                        </p>
-                        <button
-                            class="border border-secondary-fixed text-secondary-fixed self-start px-lg py-sm rounded-lg font-label-md text-label-md hover:bg-secondary-fixed hover:text-primary transition-colors">
-                            Ver Expediente
-                        </button>
-                    </div>
-                </div>
-                <!-- Project Item 5 -->
-                <div
-                    class="project-card relative group overflow-hidden bg-surface border border-outline-variant h-[450px]">
-                    <div class="h-full w-full overflow-hidden">
-                        <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
-                            data-alt="An industrial laboratory worker using advanced digital instrumentation to monitor soil stability and compression. The setting is clean, organized, and filled with modern technological equipment. The overall style is technical and reliable, with a high-key lighting scheme that highlights the accuracy of the work."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHx41Tw0AiExOXvVcbOEMhf4iIcGEVM_Wlc6X3M8158DQrN05UNOCq1yzk1UUiPYyiVX7vxrdIC7PTWSCyzd87p5NsCJbBQN4VuhSlOGmVqTUpqX97jp94vsk0Djwrl0HzaoVq75mpf3Ppaz1XlOvaxBmU8DU3Tw3ef0WPj7njCnujKLg21XCb1dev80jGYguQuW8Z7mn1D6n9S56qFjhQ5H779K-0SjLbGBVK_YZ-VGcSiiEIRXR0T_fTGFKmKHp6goEaZWYUWUc0" />
-                    </div>
-                    <div
-                        class="absolute bottom-0 left-0 right-0 p-lg bg-surface/90 backdrop-blur-sm border-t border-outline-variant">
-                        <div class="flex justify-between items-start mb-xs">
-                            <span
-                                class="font-label-sm text-label-sm text-secondary uppercase tracking-tighter">Laboratorio</span>
-                            <span class="font-label-sm text-label-sm text-on-surface-variant">2023</span>
-                        </div>
-                        <h3 class="font-headline-sm text-headline-sm text-primary mb-xs">Ensayos Triaxiales Represa
-                        </h3>
-                        <div class="flex items-center gap-xs text-on-surface-variant">
-                            <span class="material-symbols-outlined text-[18px]">location_on</span>
-                            <span class="font-body-sm text-body-sm">Arequipa, Perú</span>
-                        </div>
-                    </div>
-                    <div
-                        class="project-overlay absolute inset-0 bg-primary/95 flex flex-col justify-center p-xl opacity-0 translate-y-4 transition-all duration-500 ease-out">
-                        <h4 class="text-white font-headline-sm text-headline-sm mb-md">Detalles Técnicos</h4>
-                        <p class="text-white/80 font-body-md text-body-md mb-lg">
-                            Caracterización avanzada de materiales de préstamo para el núcleo de presa mediante
-                            ensayos de corte directo y triaxiales CU.
-                        </p>
-                        <button
-                            class="border border-secondary-fixed text-secondary-fixed self-start px-lg py-sm rounded-lg font-label-md text-label-md hover:bg-secondary-fixed hover:text-primary transition-colors">
-                            Ver Expediente
-                        </button>
-                    </div>
-                </div>
-                <!-- Project Item 6 -->
-                <div
-                    class="project-card relative group overflow-hidden bg-surface border border-outline-variant h-[450px]">
-                    <div class="h-full w-full overflow-hidden">
-                        <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
-                            data-alt="Heavy civil engineering equipment working on a highway project. A large driller is boring into the ground for pile foundations. The environment is dusty but the equipment is pristine and powerful. The lighting is golden hour, creating strong shadows and emphasizing the scale of the machinery and the professional nature of the operation."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdJW28YRmEpDczt0JHx2wgBZW0R_GXxB1HRY0U9g0Ve2koke52TH4XKw20jLsNulZh_r4J137lkKotKe8saAyJUHNfREyEDz0orb76s6X4SR5FWBeehHQwvzBGVfE_gPchLxZqu09fbTzo4He-6KdHg7rsSp_2488HkLsJtkT_yeB-kVAbZiX0wQTwK1FRkGgQzD9uV2qpgtZhjjiNqdZyZCPMF-gNZirzoNyCUbdp21X765eq7nM0J-OOe0h4ds_rkYoIaWCfb0dm" />
-                    </div>
-                    <div
-                        class="absolute bottom-0 left-0 right-0 p-lg bg-surface/90 backdrop-blur-sm border-t border-outline-variant">
-                        <div class="flex justify-between items-start mb-xs">
-                            <span
-                                class="font-label-sm text-label-sm text-secondary uppercase tracking-tighter">Geotecnia</span>
-                            <span class="font-label-sm text-label-sm text-on-surface-variant">2024</span>
-                        </div>
-                        <h3 class="font-headline-sm text-headline-sm text-primary mb-xs">Estabilidad de Taludes
-                            Minería</h3>
-                        <div class="flex items-center gap-xs text-on-surface-variant">
-                            <span class="material-symbols-outlined text-[18px]">location_on</span>
-                            <span class="font-body-sm text-body-sm">Moquegua, Perú</span>
-                        </div>
-                    </div>
-                    <div
-                        class="project-overlay absolute inset-0 bg-primary/95 flex flex-col justify-center p-xl opacity-0 translate-y-4 transition-all duration-500 ease-out">
-                        <h4 class="text-white font-headline-sm text-headline-sm mb-md">Detalles Técnicos</h4>
-                        <p class="text-white/80 font-body-md text-body-md mb-lg">
-                            Modelamiento numérico y propuesta de sostenimiento con pernos de roca y concreto lanzado
-                            para accesos principales de tajo abierto.
-                        </p>
-                        <button
-                            class="border border-secondary-fixed text-secondary-fixed self-start px-lg py-sm rounded-lg font-label-md text-label-md hover:bg-secondary-fixed hover:text-primary transition-colors">
-                            Ver Expediente
-                        </button>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -427,10 +282,21 @@
                     class="bg-secondary-container text-on-secondary-container px-xl py-md rounded-lg font-label-md text-label-md uppercase tracking-widest hover:opacity-90 transition-opacity">
                     Contactar un Especialista
                 </button>
-                <button
+
+                @php
+                    $brochure = json_decode($company->brochure, true);
+                    $urlBrochure = !empty($brochure)
+                        ? asset('storage/' . str_replace('\\', '/', $brochure[0]['download_link']))
+                        : null;
+                @endphp
+
+                @if($urlBrochure)
+                    <a href="{{ $urlBrochure }}"
+                    download
                     class="border border-white/30 text-white px-xl py-md rounded-lg font-label-md text-label-md uppercase tracking-widest hover:bg-white/10 transition-colors">
-                    Descargar Brochure 2024
-                </button>
+                        Descargar Brochure
+                    </a>
+                @endif
             </div>
         </div>
     </section>

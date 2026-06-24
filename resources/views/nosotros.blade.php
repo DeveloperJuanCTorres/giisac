@@ -162,6 +162,19 @@
     .hero-mask {
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
     }
+
+    .py-stack-md {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    .gap-gutter {
+        gap: 32px !important;
+    }
+
+    .max-w-container-max {
+        max-width: 1280px;
+    }
 </style>
 @section('content')
 
@@ -171,17 +184,16 @@
     <div class="absolute inset-0 z-0">
         <img class="w-full h-full object-cover opacity-40 mix-blend-overlay"
             data-alt="A professional engineering team in high-visibility safety vests and white hard hats conducting soil testing at a large-scale construction site. The lighting is bright and natural, capturing a professional and technical atmosphere. The composition is clean and focused, reflecting a high-end corporate identity with a cool blue color palette and sharp details. The environment is vast and organized, symbolizing efficiency and technical mastery in the field."
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzHjRyY_td3j18m0XloCNe_WPZbRzB6k7SouFIz5ojjavD3dP7WO5w1pfzs2qYWc4xCYnvIJkY4KmvBqQ9j1OaSkoyC5XF0Bc-1-Rvv8_gy50Ord7dAbNjnPjW9jBC6RN1Tk9ySVdHrlo1PoKHZGjjEelbsTKgr4DjUhTPVgMLD3L6W1zVTs2LQ__4vIAzFwFmXsqlo0JjFeXbV0KnOGrJLgiLo2-4EMjDx9KzK7noQ_h0yADtHoo73zkc98oQ_nhZ7n4Jj6mVWqnA" />
+            src="{{asset('storage/' . $nosotros->banner)}}" />
     </div>
     <div class="relative z-10 w-full max-w-max-width mx-auto px-margin-desktop">
         <div class="max-w-2xl">
             <span
-                class="inline-block px-md py-xs bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-label-sm mb-md">Liderazgo
-                en Ingeniería</span>
-            <h1 class="font-headline-lg text-white text-5xl md:text-7xl mb-lg leading-tight">Nuestra Trayectoria
+                class="inline-block px-md py-xs bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-label-sm mb-md">
+                {{$nosotros->titulo}}</span>
+            <h1 class="font-headline-lg text-white text-5xl md:text-7xl mb-lg leading-tight">{{$nosotros->nombre}}
             </h1>
-            <p class="font-body-lg text-primary-fixed-dim max-w-lg">Forjando el futuro de la infraestructura
-                peruana a través de la precisión analítica y la integridad técnica.</p>
+            <p class="font-body-lg text-primary-fixed-dim max-w-lg">{{$nosotros->descripcion}}</p>
         </div>
     </div>
     <div class="absolute bottom-0 right-0 p-xl hidden md:block">
@@ -199,23 +211,17 @@
                 <h2 class="font-headline-md text-headline-md text-primary mb-md">Excelencia desde el origen</h2>
                 <div class="w-16 h-1 bg-secondary mb-lg"></div>
                 <p class="font-body-md text-body-md text-on-surface-variant mb-md leading-relaxed">
-                    Fundada con la visión de elevar los estándares de la ingeniería civil en el Perú, GI SAC
-                    nació de la necesidad de laboratorios con rigor científico absoluto. Nuestra historia está
-                    marcada por la participación en los proyectos de infraestructura más ambiciosos del país.
-                </p>
-                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                    Nos impulsa el compromiso inquebrantable con la precisión. No solo entregamos datos;
-                    entregamos la confianza necesaria para construir cimientos que perduren por generaciones.
+                    {!! $nosotros->resenia !!}
                 </p>
             </div>
             <div class="md:col-span-7 grid grid-cols-2 gap-md">
                 <div
                     class="aspect-square bg-surface-container-low border border-outline-variant p-lg flex flex-col justify-end">
-                    <span class="font-headline-lg text-primary text-5xl mb-sm">15+</span>
+                    <span class="font-headline-lg text-primary text-5xl mb-sm">{{$nosotros->anios}}+</span>
                     <p class="font-label-md text-on-surface-variant">Años de Experiencia</p>
                 </div>
                 <div class="aspect-square bg-primary text-white p-lg flex flex-col justify-end">
-                    <span class="font-headline-lg text-white text-5xl mb-sm">500+</span>
+                    <span class="font-headline-lg text-white text-5xl mb-sm">{{$nosotros->proyectos}}+</span>
                     <p class="font-label-md text-primary-fixed">Proyectos Exitosos</p>
                 </div>
                 <div
@@ -225,7 +231,7 @@
                 </div>
                 <div class="aspect-square bg-secondary-container p-lg flex flex-col justify-end">
                     <span class="font-headline-lg text-on-secondary-container text-5xl mb-sm">ISO</span>
-                    <p class="font-label-md text-on-secondary-container">Certificación de Calidad</p>
+                    <p class="font-label-md text-on-secondary-container">{{$nosotros->iso}}</p>
                 </div>
             </div>
         </div>
@@ -250,9 +256,7 @@
                 </div>
                 <h3 class="font-headline-sm text-headline-sm text-primary mb-md">Misión</h3>
                 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                    Proveer servicios integrales de ingeniería y laboratorio de suelos con el más alto rigor
-                    técnico, utilizando tecnología de vanguardia para garantizar la seguridad y sostenibilidad
-                    de las obras civiles de nuestros clientes.
+                    {!! $nosotros->mision !!}
                 </p>
             </div>
             <!-- Vision Card -->
@@ -265,10 +269,7 @@
                 </div>
                 <h3 class="font-headline-sm text-headline-sm text-primary mb-md">Visión</h3>
                 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                    Ser el referente nacional indiscutible en consultoría técnica y control de calidad,
-                    reconocidos por nuestra integridad ética, innovación constante y contribución al desarrollo
-                    de una infraestructura resiliente.
-                </p>
+                    {!! $nosotros->vision !!}
             </div>
         </div>
     </div>
@@ -288,39 +289,15 @@
             </button>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+            @foreach($pilares as $pilar)
             <div class="border border-outline-variant p-md bg-white">
                 <div class="flex items-center gap-md mb-sm">
-                    <span class="material-symbols-outlined text-secondary" data-icon="verified">verified</span>
-                    <h4 class="font-label-md text-primary">Acreditación INACAL</h4>
+                    <img src="{{asset('storage/' . $pilar->icono)}}" width="30" alt="">
+                    <h4 class="font-label-md text-primary">{{$pilar->nombre}}</h4>
                 </div>
-                <p class="font-body-sm text-on-surface-variant">Cumplimiento estricto de las normas peruanas de
-                    acreditación de laboratorios.</p>
+                <p class="font-body-sm text-on-surface-variant">{{$pilar->descripcion}}</p>
             </div>
-            <div class="border border-outline-variant p-md bg-white">
-                <div class="flex items-center gap-md mb-sm">
-                    <span class="material-symbols-outlined text-secondary"
-                        data-icon="precision_manufacturing">precision_manufacturing</span>
-                    <h4 class="font-label-md text-primary">Equipamiento Digital</h4>
-                </div>
-                <p class="font-body-sm text-on-surface-variant">Maquinaria de última generación con calibración
-                    certificada anual.</p>
-            </div>
-            <div class="border border-outline-variant p-md bg-white">
-                <div class="flex items-center gap-md mb-sm">
-                    <span class="material-symbols-outlined text-secondary" data-icon="groups">groups</span>
-                    <h4 class="font-label-md text-primary">Staff Senior</h4>
-                </div>
-                <p class="font-body-sm text-on-surface-variant">Ingenieros colegiados con especializaciones en
-                    geotecnia y estructuras.</p>
-            </div>
-            <div class="border border-outline-variant p-md bg-white">
-                <div class="flex items-center gap-md mb-sm">
-                    <span class="material-symbols-outlined text-secondary" data-icon="security">security</span>
-                    <h4 class="font-label-md text-primary">Protocolos de Seguridad</h4>
-                </div>
-                <p class="font-body-sm text-on-surface-variant">Cero incidentes en campo gracias a nuestra
-                    rigurosa gestión de riesgos.</p>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -348,9 +325,9 @@
             <button
                 class="bg-secondary-container text-on-secondary-container px-xl py-md font-label-md rounded-lg hover:scale-105 transition-transform">Solicitar
                 Presupuesto</button>
-            <button
+            <a href="{{route('proyectos')}}"
                 class="border border-white/30 text-white px-xl py-md font-label-md rounded-lg hover:bg-white/10 transition-colors">Ver
-                Proyectos</button>
+                Proyectos</a>
         </div>
     </div>
 </section>

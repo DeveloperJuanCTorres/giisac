@@ -23,6 +23,19 @@
         box-shadow: 0 0 0 2px rgba(0, 69, 107, 0.1);
         outline: none;
     }
+
+    .py-stack-md {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    .gap-gutter {
+        gap: 32px !important;
+    }
+
+    .max-w-container-max {
+        max-width: 1280px;
+    }
 </style>
 <script id="tailwind-config">
     tailwind.config = {
@@ -179,8 +192,7 @@
                         <span class="material-symbols-outlined text-primary mt-1">location_on</span>
                         <div>
                             <p class="font-label-md text-label-md text-primary">Dirección Central</p>
-                            <p class="font-body-md text-body-md text-on-surface-variant">Av. Principal 123, San
-                                Isidro, Lima, Perú</p>
+                            <p class="font-body-md text-body-md text-on-surface-variant">{{$company->direccion}}</p>
                         </div>
                     </div>
                     <!-- Phone -->
@@ -188,8 +200,7 @@
                         <span class="material-symbols-outlined text-primary mt-1">call</span>
                         <div>
                             <p class="font-label-md text-label-md text-primary">Teléfonos de Atención</p>
-                            <p class="font-body-md text-body-md text-on-surface-variant">+51 1 456-7890 / +51
-                                987 654 321</p>
+                            <p class="font-body-md text-body-md text-on-surface-variant">{{$company->telefono}} / {{$company->whatsapp}}</p>
                         </div>
                     </div>
                     <!-- Email -->
@@ -197,7 +208,7 @@
                         <span class="material-symbols-outlined text-primary mt-1">mail</span>
                         <div>
                             <p class="font-label-md text-label-md text-primary">Correo Corporativo</p>
-                            <p class="font-body-md text-body-md text-on-surface-variant">proyectos@gi-sac.com.pe
+                            <p class="font-body-md text-body-md text-on-surface-variant">{{$company->correo}}
                             </p>
                         </div>
                     </div>
@@ -206,7 +217,7 @@
                         <span class="material-symbols-outlined text-primary mt-1">assignment_ind</span>
                         <div>
                             <p class="font-label-md text-label-md text-primary">RUC</p>
-                            <p class="font-body-md text-body-md text-on-surface-variant">20601234567</p>
+                            <p class="font-body-md text-body-md text-on-surface-variant">{{$company->ruc}}</p>
                         </div>
                     </div>
                 </div>
@@ -215,23 +226,42 @@
             <div class="space-y-md pt-md border-t border-outline-variant">
                 <p class="font-label-md text-label-md text-primary">Nuestras Redes</p>
                 <div class="flex gap-md">
-                    <a class="w-10 h-10 rounded border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors"
-                        href="#">
-                        <span class="material-symbols-outlined text-on-surface-variant">share</span>
+
+                    <a href="{{ $company->link_facebook ?? '#' }}"
+                    target="_blank"
+                    class="w-10 h-10 rounded border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors">
+                        <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a class="w-10 h-10 rounded border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors"
-                        href="#">
-                        <span class="material-symbols-outlined text-on-surface-variant">hub</span>
+
+                    <a href="{{ $company->link_instagram ?? '#' }}"
+                    target="_blank"
+                    class="w-10 h-10 rounded border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="{{ $company->link_linkedin ?? '#' }}"
+                    target="_blank"
+                    class="w-10 h-10 rounded border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+                    <a href="{{ $company->link_youtube ?? '#' }}"
+                    target="_blank"
+                    class="w-10 h-10 rounded border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+
+                    <a href="{{ $company->link_tiktok ?? '#' }}"
+                    target="_blank"
+                    class="w-10 h-10 rounded border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors">
+                        <i class="fab fa-tiktok"></i>
                     </a>
                 </div>
             </div>
             <!-- Map Container -->
             <div
                 class="aspect-video w-full bg-surface-container-high border border-outline-variant rounded overflow-hidden relative group">
-                <img class="w-full h-full object-cover grayscale contrast-125"
-                    data-alt="A professional architectural map view of the financial district in Lima, Peru, highlighting the San Isidro area with precise technical lines and a clean minimalist aesthetic. The image features a cool gray and deep blue color palette, reflecting a high-end corporate environment. The lighting is bright and even, emphasizing clarity and geographical precision."
-                    data-location="Lima, Peru"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaOgksw630i1nhV8i65i__2TyIU68G_XR8hNjOFC-Xm6pvT6WKlMOi0-yW2umGJPrBCxvcsPPZ5vDVGkDqlqPIlOTBxa0ZS2s6JBAjDDLKwinkpsCI8td3XCYaMXBqHA33iReWO9zjmM0ELoXfUXYYzhobx9KmoI6tBf8Z1wP7knQ88kViPnIlXkqKyRjR86fdhk3bSlMDJ1zOs2dOirBA-3hQ5DMFbk-TvwI2RxJJ8L_3v7zhtdl2vicF8BBdJ9Bn6pXTCyALlNX6" />
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902.580039012134!2d-77.01907612517547!3d-12.003534388229887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105cf7b844d5b27%3A0x9016d8f62470e2f2!2sAv.%20Canto%20Grande%201482%2C%20Lima%2015408!5e0!3m2!1ses!2spe!4v1782283676924!5m2!1ses!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 <div
                     class="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-all pointer-events-none">
                 </div>

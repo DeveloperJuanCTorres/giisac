@@ -2,7 +2,7 @@
     <div class="flex justify-between items-center px-8 py-4 max-w-container-max mx-auto w-full">
 
         <div class="text-body-lg font-display-lg font-bold tracking-tight text-primary">
-            GI SAC
+            <img src="{{asset('storage/' . $company->logo)}}" width="150" alt="">
         </div>
 
         <div class="hidden md:flex items-center space-x-8">
@@ -48,11 +48,21 @@
             </a>
 
         </div>
+        
+        @php
+            $brochure = json_decode($company->brochure, true);
+            $urlBrochure = !empty($brochure)
+                ? asset('storage/' . str_replace('\\', '/', $brochure[0]['download_link']))
+                : null;
+        @endphp
 
-        <button
+        @if($urlBrochure)
+            <a href="{{ $urlBrochure }}"
+            download
             class="bg-secondary text-on-secondary px-6 py-2 font-label-caps text-label-caps tracking-widest hover:brightness-110 transition-all">
-            Descargar Brochure
-        </button>
+                Descargar Brochure
+            </a>
+        @endif
 
     </div>
 </nav>
