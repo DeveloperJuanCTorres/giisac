@@ -45,14 +45,31 @@
         <div class="flex flex-col gap-6">
             <h5 class="font-label-caps text-label-caps text-secondary font-bold">ACCESOS RÁPIDOS</h5>
             <ul class="space-y-3">
-                <li><a class="text-white/70 hover:text-secondary hover:underline transition-colors"
-                        href="#">Encuesta de Satisfacción</a></li>
-                <li><a class="text-white/70 hover:text-secondary hover:underline transition-colors" href="#">Libro
-                        de Reclamaciones</a></li>
-                <li><a class="text-white/70 hover:text-secondary hover:underline transition-colors"
-                        href="#">Certificados ISO 17025</a></li>
-                <li><a class="text-white/70 hover:text-secondary hover:underline transition-colors"
-                        href="#">Políticas de Privacidad</a></li>
+                <li>
+                    <a class="text-white/70 hover:text-secondary hover:underline transition-colors"
+                        href="{{route('home')}}">Inicio
+                    </a>
+                </li>
+                <li>
+                    <a class="text-white/70 hover:text-secondary hover:underline transition-colors" href="{{route('nosotros')}}">Libro
+                        Nosotros
+                    </a>
+                </li>
+                <li>
+                    <a class="text-white/70 hover:text-secondary hover:underline transition-colors"
+                        href="{{route('servicios')}}">Servicios
+                    </a>
+                </li>
+                <li>
+                    <a class="text-white/70 hover:text-secondary hover:underline transition-colors"
+                        href="{{route('proyectos')}}">Proyectos
+                    </a>
+                </li>
+                <li>
+                    <a class="text-white/70 hover:text-secondary hover:underline transition-colors"
+                        href="{{route('contactanos')}}">Contáctanos
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="flex flex-col gap-6">

@@ -278,10 +278,10 @@
                 sus obras.
             </p>
             <div class="flex flex-col sm:flex-row gap-md justify-center">
-                <button
+                <a href="{{route('contactanos')}}"
                     class="bg-secondary-container text-on-secondary-container px-xl py-md rounded-lg font-label-md text-label-md uppercase tracking-widest hover:opacity-90 transition-opacity">
                     Contactar un Especialista
-                </button>
+                </a>
 
                 @php
                     $brochure = json_decode($company->brochure, true);
@@ -321,17 +321,17 @@
     });
 
     // Sticky Header Transparency Effect
-    window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        if (window.scrollY > 20) {
-            header.classList.add('shadow-md');
-            header.classList.add('bg-surface/95');
-            header.classList.add('backdrop-blur-md');
-        } else {
-            header.classList.remove('shadow-md');
-            header.classList.remove('bg-surface/95');
-            header.classList.remove('backdrop-blur-md');
-        }
-    });
+    // window.addEventListener('scroll', () => {
+    //     const header = document.querySelector('header');
+    //     if (window.scrollY > 20) {
+    //         header.classList.add('shadow-md');
+    //         header.classList.add('bg-surface/95');
+    //         header.classList.add('backdrop-blur-md');
+    //     } else {
+    //         header.classList.remove('shadow-md');
+    //         header.classList.remove('bg-surface/95');
+    //         header.classList.remove('backdrop-blur-md');
+    //     }
+    // });
 </script>
 @endsection

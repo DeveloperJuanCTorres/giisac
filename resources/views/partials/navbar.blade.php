@@ -2,7 +2,9 @@
     <div class="flex justify-between items-center px-8 py-4 max-w-container-max mx-auto w-full">
 
         <div class="text-body-lg font-display-lg font-bold tracking-tight text-primary">
-            <img src="{{asset('storage/' . $company->logo)}}" width="150" alt="">
+            <a href="{{ route('home') }}">
+                <img src="{{asset('storage/' . $company->logo)}}" width="150" alt="">
+            </a>
         </div>
 
         <div class="hidden md:flex items-center space-x-8">

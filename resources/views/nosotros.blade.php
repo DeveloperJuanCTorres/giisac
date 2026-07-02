@@ -283,10 +283,10 @@
                 <p class="font-body-md text-on-surface-variant">Nuestro sistema de gestión garantiza resultados
                     trazables y exactos bajo normativas internacionales ASTM, NTP e ISO.</p>
             </div>
-            <button class="flex items-center gap-sm text-primary font-label-md group">
+            <!-- <button class="flex items-center gap-sm text-primary font-label-md group">
                 Ver certificaciones <span
                     class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-            </button>
+            </button> -->
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
             @foreach($pilares as $pilar)
@@ -322,9 +322,9 @@
     <div class="relative z-10 max-w-max-width mx-auto px-margin-desktop text-center">
         <h2 class="font-headline-lg text-white mb-lg">¿Listo para iniciar su próximo proyecto?</h2>
         <div class="flex flex-col sm:flex-row justify-center gap-md">
-            <button
+            <a href="{{route('contactanos')}}"
                 class="bg-secondary-container text-on-secondary-container px-xl py-md font-label-md rounded-lg hover:scale-105 transition-transform">Solicitar
-                Presupuesto</button>
+                Presupuesto</a>
             <a href="{{route('proyectos')}}"
                 class="border border-white/30 text-white px-xl py-md font-label-md rounded-lg hover:bg-white/10 transition-colors">Ver
                 Proyectos</a>

@@ -156,6 +156,8 @@
     .heroSwiper .swiper-pagination-bullet-active{
         background:#edb900;
     }
+
+ 
 </style>
 
 <style>
@@ -288,19 +290,20 @@
                 {{$service->nombre}}
             </h3>
             <p class="text-on-surface-variant text-body-md mb-8">{{$service->descripcion}}</p>
-            <div class="flex justify-between items-center mt-auto">
+            <!-- <div class="flex justify-between items-center mt-auto">
                 <span class="font-label-caps text-[10px] tracking-tighter text-outline">REF: ENG-001</span>
                 <span
                     class="material-symbols-outlined transform translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all text-secondary"
-                    data-icon="arrow_forward">arrow_forward</span>
-            </div>
+                    data-icon="arrow_forward">arrow_forward
+                </span>
+            </div> -->
         </div>
         @endforeach
     </div>
 </section>
 <!-- Projects Portfolio -->
-<section class="bg-primary-container text-on-primary-container py-stack-xl" id="proyectos">
-    <div class="max-w-container-max mx-auto px-8">
+<section class="bg-primary-container text-on-primary-container pt-5" id="proyectos">
+    <div class="max-w-container-max mx-auto px-8 pt-5">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-stack-md gap-6">
             <div class="max-w-xl">
                 <span class="font-label-caps text-label-caps text-secondary block mb-2">PORTAFOLIO</span>
@@ -435,7 +438,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-stack-sm p-6 bg-surface-container-low border border-outline-variant">
+                <!-- <div class="mt-stack-sm p-6 bg-surface-container-low border border-outline-variant">
                     <h4 class="font-label-caps text-label-caps text-primary mb-4">CANALES DE ATENCIÓN</h4>
                     <ul class="space-y-3">
                         <li><a class="text-body-md text-secondary hover:underline flex items-center gap-2"
@@ -445,7 +448,7 @@
                                 href="#"><span class="material-symbols-outlined text-sm"
                                     data-icon="menu_book">menu_book</span> Libro de Reclamaciones</a></li>
                     </ul>
-                </div>
+                </div> -->
             </div>
             <div class="md:col-span-8 bg-surface-container-lowest p-8 md:p-12 border border-outline-variant">
                 <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
