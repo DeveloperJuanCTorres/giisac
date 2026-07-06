@@ -175,6 +175,10 @@
     .max-w-container-max {
         max-width: 1280px;
     }
+
+    .p-lg {
+        padding: 15px !important;
+    }
 </style>
 @section('content')
 

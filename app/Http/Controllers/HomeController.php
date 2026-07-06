@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Models\Pillar;
 use App\Models\Project;
 use App\Models\Service;
+use App\Models\Specialist;
 use App\Models\Taxonomy;
 use Illuminate\Http\Request;
 
@@ -34,7 +35,11 @@ class HomeController extends Controller
         $banners = Banner::all();
         $services = Service::take(4)->get();
         $projects = Project::all();
-        return view('home', compact('company', 'banners', 'services', 'projects'));
+
+        $specialists = Specialist::where('activo',1)
+                ->orderBy('id')
+                ->get();
+        return view('home', compact('company', 'banners', 'services', 'projects', 'specialists'));
     }
 
     public function nosotros()
@@ -42,14 +47,22 @@ class HomeController extends Controller
         $company = Company::first();
         $nosotros = About::first();
         $pilares = Pillar::all();
-        return view('nosotros', compact('company', 'nosotros', 'pilares'));
+
+        $specialists = Specialist::where('activo',1)
+                ->orderBy('id')
+                ->get();
+        return view('nosotros', compact('company', 'nosotros', 'pilares', 'specialists'));
     }
 
     public function servicios()
     {
         $company = Company::first();
         $services = Service::all();
-        return view('servicios', compact('company', 'services'));
+
+        $specialists = Specialist::where('activo',1)
+                ->orderBy('id')
+                ->get();
+        return view('servicios', compact('company', 'services', 'specialists'));
     }
 
     public function proyectos(Request $request)
@@ -75,22 +88,36 @@ class HomeController extends Controller
 
         $taxonomies = Taxonomy::orderBy('nombre')->get();
 
+        $specialists = Specialist::where('activo',1)
+                ->orderBy('id')
+                ->get();
+
         return view('proyectos', compact(
             'company',
             'projects',
-            'taxonomies'
+            'taxonomies',
+            'specialists'
         ));
     }
 
     public function contactanos()
     {
         $company = Company::first();
-        return view('contactanos', compact('company'));
+        $services = Service::all();
+        $specialists = Specialist::where('activo',1)
+                ->orderBy('id')
+                ->get();
+
+        return view('contactanos', compact('company', 'services', 'specialists'));
     }
 
     public function detalle_proyecto()
     {
         $company = Company::first();
-        return view('detalle-proyecto',compact('company'));
+
+        $specialists = Specialist::where('activo',1)
+                ->orderBy('id')
+                ->get();
+        return view('detalle-proyecto',compact('company', 'specialists'));
     }
 }

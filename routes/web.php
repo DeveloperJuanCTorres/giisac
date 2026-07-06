@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,12 @@ Route::get('/servicios', [App\Http\Controllers\HomeController::class, 'servicios
 Route::get('/proyectos', [App\Http\Controllers\HomeController::class, 'proyectos'])->name('proyectos');
 Route::get('/contactanos', [App\Http\Controllers\HomeController::class, 'contactanos'])->name('contactanos');
 Route::get('/detalle-proyecto', [App\Http\Controllers\HomeController::class, 'detalle_proyecto'])->name('detalle-proyecto');
+
+Route::post('/contact/send', [ContactController::class, 'sendContact'])
+    ->name('contact.send');
+
+Route::post('/work/send', [ContactController::class, 'sendWork'])
+    ->name('work.send');
 
 
 Route::group(['prefix' => 'admin'], function () {

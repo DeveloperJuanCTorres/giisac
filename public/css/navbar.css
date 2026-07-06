@@ -1,0 +1,1307 @@
+/*==================================================
+    MC PREMIUM NAVBAR
+    Parte 1
+===================================================*/
+
+:root{
+
+    --mc-primary:#1d4ed8;
+    --mc-primary-dark:#1e40af;
+    --mc-secondary:#0f172a;
+
+    --mc-white:#ffffff;
+
+    --mc-text:#1e293b;
+
+    --mc-text-light:#64748b;
+
+    --mc-border:rgba(255,255,255,.25);
+
+    --mc-shadow:
+        0 10px 40px rgba(15,23,42,.10);
+
+    --mc-shadow-hover:
+        0 18px 45px rgba(15,23,42,.18);
+
+    --mc-radius:18px;
+
+    --mc-transition:.35s ease;
+
+}
+
+/*=======================================*/
+
+*{
+
+    box-sizing:border-box;
+
+}
+
+/*=======================================*/
+
+.mc-navbar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    z-index:9999;
+
+    transition:all .35s ease;
+
+    background:rgba(255,255,255,.78);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,.20);
+
+}
+
+/*=======================================*/
+
+.mc-navbar.scrolled{
+
+    background:#ffffff;
+
+    box-shadow:var(--mc-shadow);
+
+}
+
+/*=======================================*/
+
+.mc-navbar-container{
+
+    width:92%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    height:88px;
+
+}
+
+/*=======================================*/
+
+.mc-navbar-logo{
+
+    display:flex;
+
+    align-items:center;
+
+    text-decoration:none;
+
+}
+
+.mc-navbar-logo img{
+
+    height:55px;
+
+    width:auto;
+
+    transition:.30s;
+
+}
+
+.mc-navbar-logo:hover img{
+
+    transform:scale(1.04);
+
+}
+
+/*=======================================*/
+
+.mc-navbar-menu{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+/*=======================================*/
+
+.mc-navbar-menu li{
+
+    position:relative;
+
+}
+
+/*=======================================*/
+
+.mc-navbar-menu a{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-decoration:none;
+
+    color:var(--mc-text);
+
+    font-size:15px;
+
+    font-weight:600;
+
+    letter-spacing:.4px;
+
+    padding:12px 18px;
+
+    border-radius:40px;
+
+    transition:var(--mc-transition);
+
+}
+
+/*=======================================*/
+
+.mc-navbar-menu a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:8px;
+
+    width:0;
+
+    height:2px;
+
+    border-radius:5px;
+
+    background:var(--mc-primary);
+
+    transition:.30s;
+
+    transform:translateX(-50%);
+
+}
+
+/*=======================================*/
+
+.mc-navbar-menu a:hover{
+
+    color:var(--mc-primary);
+
+    background:#f8fafc;
+
+}
+
+.mc-navbar-menu a:hover::after{
+
+    width:55%;
+
+}
+
+/*=======================================*/
+
+.mc-navbar-menu a.active{
+
+    background:linear-gradient(
+        135deg,
+        var(--mc-primary),
+        var(--mc-primary-dark)
+    );
+
+    color:#fff;
+
+    box-shadow:
+
+    0 10px 25px rgba(29,78,216,.25);
+
+}
+
+.mc-navbar-menu a.active::after{
+
+    display:none;
+
+}
+
+/*=======================================*/
+
+.mc-navbar-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+/*=======================================*/
+
+.mc-btn-primary{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-decoration:none;
+
+    padding:14px 28px;
+
+    border-radius:999px;
+
+    color:#fff;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    letter-spacing:.6px;
+
+    background:linear-gradient(
+        135deg,
+        var(--mc-primary),
+        var(--mc-primary-dark)
+    );
+
+    transition:.35s;
+
+    overflow:hidden;
+
+    position:relative;
+
+    box-shadow:
+
+        0 12px 28px rgba(29,78,216,.28);
+
+}
+
+/*=======================================*/
+
+.mc-btn-primary::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:70%;
+
+    height:100%;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.45),
+
+        transparent
+
+    );
+
+    transition:.7s;
+
+}
+
+/*=======================================*/
+
+.mc-btn-primary:hover::before{
+
+    left:150%;
+
+}
+
+/*=======================================*/
+
+.mc-btn-primary:hover{
+
+    transform:translateY(-2px);
+
+    color:#fff;
+
+    box-shadow:
+
+        var(--mc-shadow-hover);
+
+}
+
+/*=======================================*/
+
+.mc-btn-primary span{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+/*=======================================*/
+
+.mc-hamburger{
+
+    width:52px;
+
+    height:52px;
+
+    border:none;
+
+    background:#fff;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+    gap:6px;
+
+    transition:.35s;
+
+    box-shadow:
+
+        0 8px 24px rgba(0,0,0,.08);
+
+}
+
+/*=======================================*/
+
+.mc-hamburger:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+
+        0 12px 30px rgba(0,0,0,.15);
+
+}
+
+/*=======================================*/
+
+.mc-hamburger span{
+
+    width:24px;
+
+    height:2px;
+
+    border-radius:5px;
+
+    background:#1e293b;
+
+    transition:.35s;
+
+}
+
+/*=======================================*/
+
+.mc-hamburger.active span:nth-child(1){
+
+    transform:
+
+        rotate(45deg)
+
+        translateY(8px);
+
+}
+
+.mc-hamburger.active span:nth-child(2){
+
+    opacity:0;
+
+}
+
+.mc-hamburger.active span:nth-child(3){
+
+    transform:
+
+        rotate(-45deg)
+
+        translateY(-8px);
+
+}
+
+/*==================================================
+        MC PREMIUM NAVBAR
+        PARTE 2
+==================================================*/
+
+/*=============================
+        OVERLAY
+=============================*/
+
+.mc-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(15,23,42,.55);
+
+    backdrop-filter:blur(4px);
+
+    -webkit-backdrop-filter:blur(4px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.35s ease;
+
+    z-index:9998;
+
+}
+
+.mc-overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/*=============================
+        DRAWER
+=============================*/
+
+.mc-drawer{
+
+    position:fixed;
+
+    top:0;
+
+    right:-420px;
+
+    width:380px;
+
+    max-width:90%;
+
+    height:100vh;
+
+    background:#ffffff;
+
+    display:flex;
+
+    flex-direction:column;
+
+    box-shadow:-15px 0 45px rgba(0,0,0,.15);
+
+    transition:.45s cubic-bezier(.4,0,.2,1);
+
+    z-index:9999;
+
+}
+
+.mc-drawer.active{
+
+    right:0;
+
+}
+
+/*=============================
+        HEADER
+=============================*/
+
+.mc-drawer-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:25px;
+
+    border-bottom:1px solid #edf2f7;
+
+}
+
+.mc-drawer-header img{
+
+    height:50px;
+
+    width:auto;
+
+}
+
+/*=============================
+        CLOSE BUTTON
+=============================*/
+
+.mc-close{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#f8fafc;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.mc-close:hover{
+
+    background:#e2e8f0;
+
+    transform:rotate(90deg);
+
+}
+
+/*=============================
+        BODY
+=============================*/
+
+.mc-drawer-body{
+
+    flex:1;
+
+    padding:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    overflow-y:auto;
+
+}
+
+/*=============================
+        LINKS
+=============================*/
+
+.mc-drawer-body a{
+
+    text-decoration:none;
+
+    color:var(--mc-text);
+
+    font-size:16px;
+
+    font-weight:600;
+
+    padding:15px 18px;
+
+    border-radius:14px;
+
+    transition:.30s;
+
+    display:flex;
+
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.mc-drawer-body a::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:4px;
+
+    height:100%;
+
+    background:var(--mc-primary);
+
+    transform:scaleY(0);
+
+    transition:.30s;
+
+}
+
+.mc-drawer-body a:hover{
+
+    background:#f8fafc;
+
+    padding-left:26px;
+
+    color:var(--mc-primary);
+
+}
+
+.mc-drawer-body a:hover::before{
+
+    transform:scaleY(1);
+
+}
+
+/*=============================
+        ACTIVE
+=============================*/
+
+.mc-drawer-body a.active{
+
+    background:linear-gradient(
+        135deg,
+        var(--mc-primary),
+        var(--mc-primary-dark)
+    );
+
+    color:#fff;
+
+    box-shadow:
+
+        0 12px 25px rgba(29,78,216,.25);
+
+}
+
+.mc-drawer-body a.active::before{
+
+    display:none;
+
+}
+
+/*=============================
+        FOOTER
+=============================*/
+
+.mc-drawer-footer{
+
+    padding:25px;
+
+    border-top:1px solid #edf2f7;
+
+}
+
+.mc-btn-full{
+
+    width:100%;
+
+    justify-content:center;
+
+}
+
+/*=============================
+        RESPONSIVE
+=============================*/
+
+@media(max-width:1100px){
+
+    .mc-navbar-menu{
+
+        gap:8px;
+
+    }
+
+    .mc-navbar-menu a{
+
+        padding:10px 14px;
+
+        font-size:14px;
+
+    }
+
+}
+
+/*=============================*/
+
+@media(max-width:991px){
+
+    .mc-navbar{
+
+        backdrop-filter:blur(15px);
+
+    }
+
+    .mc-navbar-container{
+
+        height:78px;
+
+    }
+
+    .mc-navbar-menu{
+
+        display:none;
+
+    }
+
+    .mc-navbar-actions > .mc-btn-primary{
+
+        display:none;
+
+    }
+
+    .mc-hamburger{
+
+        display:flex;
+
+    }
+
+}
+
+/*=============================*/
+
+@media(max-width:768px){
+
+    .mc-navbar-container{
+
+        width:92%;
+
+    }
+
+    .mc-navbar-logo img{
+
+        height:45px;
+
+    }
+
+    .mc-drawer{
+
+        width:340px;
+
+    }
+
+}
+
+/*=============================*/
+
+@media(max-width:480px){
+
+    .mc-navbar-container{
+
+        height:72px;
+
+    }
+
+    .mc-navbar-logo img{
+
+        height:40px;
+
+    }
+
+    .mc-hamburger{
+
+        width:46px;
+
+        height:46px;
+
+    }
+
+    .mc-hamburger span{
+
+        width:22px;
+
+    }
+
+    .mc-drawer{
+
+        width:100%;
+
+        max-width:100%;
+
+    }
+
+    .mc-drawer-header{
+
+        padding:20px;
+
+    }
+
+    .mc-drawer-body{
+
+        padding:20px;
+
+    }
+
+    .mc-drawer-footer{
+
+        padding:20px;
+
+    }
+
+}
+
+/*=============================
+        LARGE DESKTOP
+=============================*/
+
+@media(min-width:1600px){
+
+    .mc-navbar-container{
+
+        max-width:1550px;
+
+    }
+
+}
+
+/*==================================================
+        MC PREMIUM NAVBAR
+        PARTE 3
+==================================================*/
+
+
+/*==============================
+        NAVBAR SCROLL
+===============================*/
+
+.mc-navbar.scrolled{
+
+    background:rgba(255,255,255,.96);
+
+    backdrop-filter:blur(20px);
+
+    -webkit-backdrop-filter:blur(20px);
+
+    border-bottom:1px solid rgba(0,0,0,.05);
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.08);
+
+}
+
+.mc-navbar.scrolled .mc-navbar-container{
+
+    height:74px;
+
+}
+
+/*==============================
+        TRANSITIONS
+===============================*/
+
+.mc-navbar,
+.mc-navbar-container,
+.mc-navbar-logo img,
+.mc-navbar-menu a,
+.mc-btn-primary,
+.mc-hamburger{
+
+    transition:all .35s ease;
+
+}
+
+/*==============================
+        MENU EFFECT
+===============================*/
+
+.mc-navbar-menu li{
+
+    overflow:hidden;
+
+}
+
+.mc-navbar-menu a{
+
+    overflow:hidden;
+
+}
+
+.mc-navbar-menu a::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-100%;
+
+    top:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.18),
+        transparent
+    );
+
+    transition:.6s;
+
+}
+
+.mc-navbar-menu a:hover::before{
+
+    left:120%;
+
+}
+
+/*==============================
+        BUTTON EFFECT
+===============================*/
+
+.mc-btn-primary{
+
+    position:relative;
+
+}
+
+.mc-btn-primary:active{
+
+    transform:scale(.96);
+
+}
+
+/*==============================
+        DRAWER ANIMATION
+===============================*/
+
+.mc-drawer-body a{
+
+    opacity:0;
+
+    transform:translateX(35px);
+
+}
+
+.mc-drawer.active .mc-drawer-body a{
+
+    opacity:1;
+
+    transform:none;
+
+}
+
+.mc-drawer.active .mc-drawer-body a:nth-child(1){
+
+    transition:.25s .08s;
+
+}
+
+.mc-drawer.active .mc-drawer-body a:nth-child(2){
+
+    transition:.25s .13s;
+
+}
+
+.mc-drawer.active .mc-drawer-body a:nth-child(3){
+
+    transition:.25s .18s;
+
+}
+
+.mc-drawer.active .mc-drawer-body a:nth-child(4){
+
+    transition:.25s .23s;
+
+}
+
+.mc-drawer.active .mc-drawer-body a:nth-child(5){
+
+    transition:.25s .28s;
+
+}
+
+.mc-drawer.active .mc-drawer-body a:nth-child(6){
+
+    transition:.25s .33s;
+
+}
+
+/*==============================
+        HOVER CARD
+===============================*/
+
+.mc-drawer-body a:hover{
+
+    box-shadow:
+
+        0 12px 25px rgba(15,23,42,.08);
+
+}
+
+/*==============================
+        LOGO
+===============================*/
+
+.mc-navbar-logo{
+
+    overflow:hidden;
+
+}
+
+.mc-navbar-logo img{
+
+    transform-origin:center;
+
+}
+
+.mc-navbar-logo:hover img{
+
+    transform:scale(1.06);
+
+}
+
+/*==============================
+        SCROLLBAR
+===============================*/
+
+.mc-drawer-body::-webkit-scrollbar{
+
+    width:7px;
+
+}
+
+.mc-drawer-body::-webkit-scrollbar-thumb{
+
+    background:#d4d4d4;
+
+    border-radius:50px;
+
+}
+
+.mc-drawer-body::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/*==============================
+        PROGRESS BAR
+===============================*/
+
+.mc-scroll-progress{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    height:3px;
+
+    width:0;
+
+    z-index:99999;
+
+    background:linear-gradient(
+        90deg,
+        var(--mc-primary),
+        #38bdf8
+    );
+
+    transition:width .08s linear;
+
+}
+
+/*==============================
+        FADE
+===============================*/
+
+@keyframes mcFadeDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+.mc-navbar{
+
+    animation:mcFadeDown .55s ease;
+
+}
+
+/*==============================
+        SHADOW
+===============================*/
+
+.mc-navbar::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-1px;
+
+    width:100%;
+
+    height:1px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(0,0,0,.05),
+        transparent
+    );
+
+}
+
+/*==============================
+        CTA PULSE
+===============================*/
+
+@keyframes mcPulse{
+
+    0%{
+
+        box-shadow:
+            0 0 0 0 rgba(37,99,235,.40);
+
+    }
+
+    70%{
+
+        box-shadow:
+            0 0 0 14px rgba(37,99,235,0);
+
+    }
+
+    100%{
+
+        box-shadow:
+            0 0 0 0 rgba(37,99,235,0);
+
+    }
+
+}
+
+.mc-btn-primary{
+
+    animation:mcPulse 3s infinite;
+
+}
+
+.mc-btn-primary:hover{
+
+    animation:none;
+
+}
+
+/*==============================
+        SELECTION
+===============================*/
+
+.mc-navbar ::selection{
+
+    background:var(--mc-primary);
+
+    color:#fff;
+
+}
+
+/*==============================
+        MOBILE
+===============================*/
+
+@media(max-width:991px){
+
+    .mc-navbar.scrolled .mc-navbar-container{
+
+        height:70px;
+
+    }
+
+}
+
+/*==============================
+        SMALL DEVICES
+===============================*/
+
+@media(max-width:480px){
+
+    .mc-drawer-body a{
+
+        font-size:15px;
+
+        padding:14px 16px;
+
+    }
+
+}
+
+/*==============================
+        DESKTOP LARGE
+===============================*/
+
+@media(min-width:1600px){
+
+    .mc-navbar-menu{
+
+        gap:24px;
+
+    }
+
+    .mc-navbar-menu a{
+
+        font-size:16px;
+
+    }
+
+}
+
+/*==============================
+        PERFORMANCE
+===============================*/
+
+.mc-navbar,
+.mc-drawer,
+.mc-btn-primary,
+.mc-navbar-logo img{
+
+    will-change:transform;
+
+}
+
+/*==============================
+        END
+===============================*/

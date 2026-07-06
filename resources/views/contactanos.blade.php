@@ -274,14 +274,18 @@
         <!-- Right Column: Advanced Contact Form -->
         <div class="lg:col-span-7">
             <div class="bg-surface-container-low border border-outline-variant p-xl rounded-lg">
-                <form class="space-y-lg" id="contact-form">
+                <!-- <form class="space-y-lg" id="contact-form"> -->
+                <form id="contact-form" class="space-y-lg"
+                    action="{{ route('contact.send') }}"
+                    method="POST">
+                    @csrf
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
                         <!-- Name -->
                         <div class="space-y-xs">
                             <label class="font-label-md text-label-md text-primary" for="name">Nombre
                                 Completo</label>
                             <input
-                                class="w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus"
+                                class="only-letters w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus"
                                 id="name" name="name" placeholder="Ej. Juan Pérez" required="" type="text" />
                         </div>
                         <!-- Company -->
@@ -289,7 +293,7 @@
                             <label class="font-label-md text-label-md text-primary"
                                 for="company">Empresa</label>
                             <input
-                                class="w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus"
+                                class="company-name w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus"
                                 id="company" name="company" placeholder="Nombre de su organización" required=""
                                 type="text" />
                         </div>
@@ -312,11 +316,9 @@
                                 class="w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus appearance-none"
                                 id="service" name="service" required="">
                                 <option disabled="" selected="" value="">Seleccione un servicio</option>
-                                <option value="ingenieria">Ingeniería Civil y Estructural</option>
-                                <option value="laboratorio">Pruebas de Laboratorio</option>
-                                <option value="supervision">Supervisión de Obra</option>
-                                <option value="consultoria">Consultoría Técnica</option>
-                                <option value="otros">Otros Requerimientos</option>
+                                @foreach($services as $service)
+                                <option value="{{ $service->id }}">{{ $service->nombre }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -359,17 +361,23 @@
         </div>
     </div>
     <div class="bg-surface-container-low border border-outline-variant p-xl rounded-lg">
-        <form class="space-y-lg" id="trabaja-form" enctype="multipart/form-data">
+        <!-- <form class="space-y-lg" id="trabaja-form" enctype="multipart/form-data"> -->
+        <form id="trabaja-form" class="space-y-lg"
+            action="{{ route('work.send') }}"
+            method="POST"
+            enctype="multipart/form-data">
+
+            @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
                 <!-- Nombre -->
                 <div class="space-y-xs">
                     <label class="font-label-md text-label-md text-primary" for="name">Nombre completo</label>
-                    <input class="w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus" id="name" name="name" placeholder="Ej. Juan Pérez" required type="text">
+                    <input class="only-letters w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus" id="work_name" name="name" placeholder="Ej. Juan Pérez" required type="text">
                 </div>
                 <!-- Documento -->
                 <div class="space-y-xs">
                     <label class="font-label-md text-label-md text-primary" for="document">Documento (DNI/RUC)</label>
-                    <input class="w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus" id="document" name="document" placeholder="Ej. 12345678" required type="text">
+                    <input class="only-numbers w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus" id="document" name="document" placeholder="Ej. 12345678" required type="text">
                 </div>
             </div>
 
@@ -377,12 +385,12 @@
                 <!-- Teléfono -->
                 <div class="space-y-xs">
                     <label class="font-label-md text-label-md text-primary" for="phone">Teléfono</label>
-                    <input class="w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus" id="phone" name="phone" placeholder="Ej. +51 987 654 321" required type="tel">
+                    <input class="only-numbers w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus" id="phone" name="phone" placeholder="Ej. +51 987 654 321" required type="tel">
                 </div>
                 <!-- Email -->
                 <div class="space-y-xs">
                     <label class="font-label-md text-label-md text-primary" for="email">Correo</label>
-                    <input class="w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus" id="email" name="email" placeholder="ejemplo@empresa.com" required type="email">
+                    <input class="w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus" id="work_email" name="email" placeholder="ejemplo@empresa.com" required type="email">
                 </div>
             </div>
 
@@ -390,12 +398,12 @@
                 <!-- Puesto deseado -->
                 <div class="space-y-xs">
                     <label class="font-label-md text-label-md text-primary" for="position">Puesto deseado</label>
-                    <input class="w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus" id="position" name="position" placeholder="Ej. Ingeniero Estructural" required type="text">
+                    <input class="only-letters w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus" id="position" name="position" placeholder="Ej. Ingeniero Estructural" required type="text">
                 </div>
                 <!-- Años de experiencia -->
                 <div class="space-y-xs">
                     <label class="font-label-md text-label-md text-primary" for="experience">Experiencia (años)</label>
-                    <input class="w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus" id="experience" name="experience" placeholder="Ej. 3" required type="number" min="0">
+                    <input class="only-numbers w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus" id="experience" name="experience" placeholder="Ej. 3" required type="number" min="0">
                 </div>
             </div>
 
@@ -432,7 +440,7 @@
                 <!-- Ciudad / Región -->
                 <div class="space-y-xs">
                     <label class="font-label-md text-label-md text-primary" for="location">Ciudad / Región</label>
-                    <input class="w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus" id="location" name="location" placeholder="Ej. Lima" type="text">
+                    <input class="only-letters w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus" id="location" name="location" placeholder="Ej. Lima" type="text">
                 </div>
             </div>
 
@@ -445,7 +453,7 @@
             <!-- Mensaje breve -->
             <div class="space-y-xs">
                 <label class="font-label-md text-label-md text-primary" for="message">Mensaje breve (opcional)</label>
-                <textarea class="w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus resize-none" id="message" name="message" placeholder="Resumen de experiencia en 1-2 líneas" rows="3"></textarea>
+                <textarea class="w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus resize-none" id="work_message" name="message" placeholder="Resumen de experiencia en 1-2 líneas" rows="3"></textarea>
             </div>
 
             <!-- CV upload -->
@@ -457,103 +465,327 @@
 
             <!-- Terms -->
             <div class="flex items-center gap-sm">
-                <input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary-container" id="terms" name="terms" required type="checkbox">
+                <input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary-container" id="work_terms" name="terms" required type="checkbox">
                 <label class="font-body-sm text-body-sm text-on-surface-variant" for="terms">Acepto la política de tratamiento de datos personales de GI SAC.</label>
             </div>
 
             <!-- Submit Button -->
             <button class="w-full bg-secondary-container text-on-secondary-container font-label-md py-md rounded hover:brightness-110 transition-all uppercase tracking-widest font-bold" type="submit">Enviar CV</button>
         </form>
-
-        <script>
-            // Validación cliente: tipo y tamaño del CV, mostrar nombre
-            (function() {
-                const form = document.getElementById('trabaja-form');
-                const cvInput = document.getElementById('cv');
-                const cvName = document.getElementById('cv-name');
-                const MAX_BYTES = 5 * 1024 * 1024; // 5MB
-
-                cvInput.addEventListener('change', function() {
-                    const file = cvInput.files[0];
-                    if (!file) {
-                        cvName.textContent = '—';
-                        return;
-                    }
-                    cvName.textContent = file.name;
-                    if (file.type !== 'application/pdf') {
-                        alert('El archivo debe ser PDF.');
-                        cvInput.value = '';
-                        cvName.textContent = '—';
-                    } else if (file.size > MAX_BYTES) {
-                        alert('El archivo supera 5MB. Por favor sube un archivo más pequeño.');
-                        cvInput.value = '';
-                        cvName.textContent = '—';
-                    }
-                });
-
-                form.addEventListener('submit', function(e) {
-                    const file = cvInput.files[0];
-                    if (!file) {
-                        e.preventDefault();
-                        alert('Adjunta tu CV en formato PDF.');
-                        return;
-                    }
-                    if (file.size > MAX_BYTES) {
-                        e.preventDefault();
-                        alert('El CV supera 5MB.');
-                        return;
-                    }
-
-                    // Feedback micro-interaction (client-side only)
-                    e.preventDefault();
-                    const btn = form.querySelector('button[type="submit"]');
-                    const original = btn.innerText;
-                    btn.innerText = 'Enviando...';
-                    btn.disabled = true;
-                    setTimeout(() => {
-                        alert('Gracias. Tu CV fue enviado (simulado).');
-                        btn.innerText = original;
-                        btn.disabled = false;
-                        form.reset();
-                        cvName.textContent = '—';
-                    }, 1200);
-                });
-            })();
-        </script>
     </div>
 </section>
 
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
-    // Simple form handling
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerText;
+    document.addEventListener('DOMContentLoaded', function () {
 
-        // Micro-interaction
-        submitBtn.innerText = 'Enviando...';
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = '0.7';
+        /*==================================================
+            CONFIGURACIÓN
+        ==================================================*/
 
-        setTimeout(() => {
-            alert('¡Gracias por contactarnos! Su solicitud ha sido enviada con éxito.');
-            submitBtn.innerText = originalText;
-            submitBtn.disabled = false;
-            submitBtn.style.opacity = '1';
-            form.reset();
-        }, 1500);
+        const csrf = document.querySelector('meta[name="csrf-token"]').content;
+
+        /*==================================================
+            SWEET ALERT
+        ==================================================*/
+
+        function success(message){
+
+            Swal.fire({
+                icon:'success',
+                title:'¡Correcto!',
+                text:message,
+                confirmButtonColor:'#1b2654'
+            });
+
+        }
+
+        function error(message){
+
+            Swal.fire({
+                icon:'error',
+                title:'Oops...',
+                text:message,
+                confirmButtonColor:'#1b2654'
+            });
+
+        }
+
+        function validation(errors){
+
+            let html='';
+
+            Object.keys(errors).forEach(function(key){
+
+                html += '<div style="text-align:left;">• '+errors[key][0]+'</div>';
+
+            });
+
+            Swal.fire({
+                icon:'warning',
+                title:'Complete correctamente el formulario',
+                html:html,
+                confirmButtonColor:'#1b2654'
+            });
+
+        }
+
+        /*==================================================
+            CONTACTO
+        ==================================================*/
+
+        const contactForm=document.getElementById('contact-form');
+
+        if(contactForm){
+
+            contactForm.addEventListener('submit',async function(e){
+
+                e.preventDefault();
+
+                const btn=this.querySelector('button[type=submit]');
+
+                const original=btn.innerHTML;
+
+                btn.disabled=true;
+
+                btn.innerHTML=`
+                    <span class="spinner-border spinner-border-sm"></span>
+                    Enviando...
+                `;
+
+                try{
+
+                    const response=await fetch(this.action,{
+
+                        method:'POST',
+
+                        headers:{
+                            'X-CSRF-TOKEN':csrf,
+                            'Accept':'application/json'
+                        },
+
+                        body:new FormData(this)
+
+                    });
+
+                    const data=await response.json();
+
+                    if(response.status===422){
+
+                        validation(data.errors);
+
+                    }else if(response.ok){
+
+                        success(data.message);
+
+                        this.reset();
+
+                    }else{
+
+                        error(data.message ?? 'Ocurrió un error.');
+
+                    }
+
+                }catch(err){
+
+                    error('No fue posible conectar con el servidor.');
+
+                }
+
+                btn.disabled=false;
+
+                btn.innerHTML=original;
+
+            });
+
+        }
+
+        /*==================================================
+            TRABAJA CON NOSOTROS
+        ==================================================*/
+
+        const workForm=document.getElementById('trabaja-form');
+
+        if(workForm){
+
+            const cvInput=document.getElementById('cv');
+
+            const cvName=document.getElementById('cv-name');
+
+            const MAX=5*1024*1024;
+
+            cvInput.addEventListener('change',function(){
+
+                const file=this.files[0];
+
+                if(!file){
+
+                    cvName.textContent='—';
+
+                    return;
+
+                }
+
+                cvName.textContent=file.name;
+
+                if(file.type!='application/pdf'){
+
+                    error('El CV debe ser PDF.');
+
+                    this.value='';
+
+                    cvName.textContent='—';
+
+                    return;
+
+                }
+
+                if(file.size>MAX){
+
+                    error('El CV supera los 5MB.');
+
+                    this.value='';
+
+                    cvName.textContent='—';
+
+                }
+
+            });
+
+            workForm.addEventListener('submit',async function(e){
+
+                e.preventDefault();
+
+                const btn=this.querySelector('button[type=submit]');
+
+                const original=btn.innerHTML;
+
+                btn.disabled=true;
+
+                btn.innerHTML=`
+                    <span class="spinner-border spinner-border-sm"></span>
+                    Enviando CV...
+                `;
+
+                try{
+
+                    const response=await fetch(this.action,{
+
+                        method:'POST',
+
+                        headers:{
+                            'X-CSRF-TOKEN':csrf,
+                            'Accept':'application/json'
+                        },
+
+                        body:new FormData(this)
+
+                    });
+
+                    const data=await response.json();
+
+                    if(response.status===422){
+
+                        validation(data.errors);
+
+                    }else if(response.ok){
+
+                        success(data.message);
+
+                        this.reset();
+
+                        cvName.textContent='—';
+
+                    }else{
+
+                        error(data.message ?? 'Ocurrió un error.');
+
+                    }
+
+                }catch(err){
+
+                    error('No fue posible conectar con el servidor.');
+
+                }
+
+                btn.disabled=false;
+
+                btn.innerHTML=original;
+
+            });
+
+        }
+
     });
+</script>
 
-    // Sticky Navbar subtle effect
-    // window.addEventListener('scroll', () => {
-    //     const header = document.querySelector('header');
-    //     if (window.scrollY > 50) {
-    //         header.classList.add('shadow-md');
-    //     } else {
-    //         header.classList.remove('shadow-md');
-    //     }
-    // });
+<script>
+    /*==========================================================
+        VALIDACIONES DE ENTRADA
+    ==========================================================*/
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        /*
+        |--------------------------------------------------------------------------
+        | Solo letras
+        |--------------------------------------------------------------------------
+        */
+
+        document.querySelectorAll(".only-letters").forEach(function(input){
+
+            input.addEventListener("input", function(){
+
+                this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g,'');
+
+            });
+
+        });
+
+        /*
+        |--------------------------------------------------------------------------
+        | Solo números
+        |--------------------------------------------------------------------------
+        */
+
+        document.querySelectorAll(".only-numbers").forEach(function(input){
+
+            input.addEventListener("input", function(){
+
+                this.value = this.value.replace(/\D/g,'');
+
+            });
+
+        });
+
+        /*
+        |--------------------------------------------------------------------------
+        | Letras + números + espacios
+        |--------------------------------------------------------------------------
+        */
+
+        document.querySelectorAll(".alpha-numeric").forEach(function(input){
+
+            input.addEventListener("input", function(){
+
+                this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s]/g,'');
+
+            });
+
+        });
+
+        document.querySelectorAll(".company-name").forEach(function(input){
+
+            input.addEventListener("input", function(){
+
+                this.value=this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s&.,()-]/g,'');
+
+            });
+
+        });
+
+    });
 </script>
 @endsection

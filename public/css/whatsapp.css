@@ -1,0 +1,175 @@
+#wa-widget {
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    z-index: 99999;
+
+    font-family: 'Poppins', sans-serif;
+
+}
+
+#wa-button {
+
+    width: 70px;
+
+    height: 70px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: #25D366;
+
+    color: #fff;
+
+    font-size: 38px;
+
+    cursor: pointer;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, .25);
+
+    transition: .3s;
+
+}
+
+#wa-button:hover {
+
+    transform: scale(1.08);
+
+}
+
+.wa-box {
+
+    position: absolute;
+
+    bottom: 90px;
+
+    right: 0;
+
+    width: 330px;
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .25);
+
+    display: none;
+
+    animation: fade .25s;
+
+}
+
+.wa-header {
+
+    background: #25D366;
+
+    padding: 18px;
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+
+    color: #fff;
+
+}
+
+.wa-header img {
+
+    width: 45px;
+
+}
+
+.wa-body {
+
+    max-height: 420px;
+
+    overflow: auto;
+
+}
+
+.wa-item {
+
+    display: flex;
+
+    padding: 15px;
+
+    align-items: center;
+
+    text-decoration: none;
+
+    transition: .25s;
+
+    border-bottom: 1px solid #eee;
+
+}
+
+.wa-item:hover {
+
+    background: #f7f7f7;
+
+}
+
+.wa-item img {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    margin-right: 15px;
+
+}
+
+.wa-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.wa-info span {
+
+    font-weight: 600;
+
+    color: #333;
+
+}
+
+.wa-info small {
+
+    color: #888;
+
+}
+
+@keyframes fade {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: none;
+
+    }
+
+}
