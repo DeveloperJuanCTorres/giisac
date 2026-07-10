@@ -7,6 +7,7 @@ use App\Models\Banner;
 use App\Models\Company;
 use App\Models\Pillar;
 use App\Models\Project;
+use App\Models\Quality;
 use App\Models\Service;
 use App\Models\Specialist;
 use App\Models\Taxonomy;
@@ -35,11 +36,12 @@ class HomeController extends Controller
         $banners = Banner::all();
         $services = Service::take(4)->get();
         $projects = Project::all();
+        $calidad = Quality::first();
 
         $specialists = Specialist::where('activo',1)
                 ->orderBy('id')
                 ->get();
-        return view('home', compact('company', 'banners', 'services', 'projects', 'specialists'));
+        return view('home', compact('company', 'banners', 'services', 'projects', 'specialists', 'calidad'));
     }
 
     public function nosotros()

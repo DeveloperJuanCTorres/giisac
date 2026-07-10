@@ -258,10 +258,32 @@
                         <p class="text-white/80 font-body-md text-body-md mb-lg">
                             {{$project->descripcion}}
                         </p>
-                        <a href="{{route('detalle-proyecto')}}"
+                        @php
+                            $resumen = json_decode($project->resumen_tecnico, true);
+
+                            $urlResumen = !empty($resumen)
+                                ? asset('storage/' . str_replace('\\', '/', $resumen[0]['download_link']))
+                                : null;
+                        @endphp
+                        @if($urlResumen)
+
+                            <div class="mc-drawer-footer">
+
+                                <a href="{{ $urlResumen }}"
+                                download="{{ $project->nombre }}.pdf"
+                                class="mc-btn-primary mc-btn-full">
+
+                                    Descargar Resumen Técnico
+
+                                </a>
+
+                            </div>
+
+                        @endif
+                        <!-- <a href="{{route('detalle-proyecto')}}"
                             class="border border-secondary-fixed text-secondary-fixed self-start px-lg py-sm rounded-lg font-label-md text-label-md hover:bg-secondary-fixed hover:text-primary transition-colors">
                             Ver Expediente
-                        </a>
+                        </a> -->
                     </div>
                 </div>
                 @endforeach

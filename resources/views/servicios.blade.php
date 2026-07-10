@@ -208,7 +208,7 @@
                 <h2 class="font-headline-sm text-headline-sm uppercase tracking-tight">{{$service->nombre}}</h2>
             </div>
             <p class="font-body-md text-body-md text-on-surface-variant">
-                {{$service->descripcion}}
+                {!! $service->descripcion !!}
             </p>
             <div class="flex-grow">
                 <h3 class="font-label-md text-label-md text-primary mb-xs uppercase">Alcances Técnicos:</h3>
@@ -254,10 +254,10 @@
                     @endif
                 </ul>
             </div>
-            <button
+            <a href="{{ route('contactanos')}}"
                 class="mt-md bg-secondary text-primary font-bold py-sm px-lg rounded hover:opacity-90 transition-all font-label-md text-label-md w-full md:w-fit">
                 Cotizar Servicio
-            </button>
+            </a>
         </article>
         @endforeach
     </div>
