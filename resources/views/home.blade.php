@@ -389,8 +389,7 @@
                         class="flex items-center p-4 bg-surface-container-lowest border border-outline-variant hover:border-primary transition-colors cursor-pointer group">
                         <span class="material-symbols-outlined text-primary mr-4"
                             data-icon="verified">verified</span>
-                        <span class="flex-grow font-body-md font-semibold text-primary">Certificados ISO 17025
-                            (Vigente 2024)</span>
+                        <span class="flex-grow font-body-md font-semibold text-primary">Certificado ISO/IEC 17025</span>
                         <span class="material-symbols-outlined text-outline group-hover:text-primary"
                             data-icon="download">download</span>
                     </a>
@@ -398,7 +397,7 @@
                         class="flex items-center p-4 bg-surface-container-lowest border border-outline-variant hover:border-primary transition-colors cursor-pointer group">
                         <span class="material-symbols-outlined text-primary mr-4"
                             data-icon="assignment">assignment</span>
-                        <span class="flex-grow font-body-md font-semibold text-primary">Alcances de
+                        <span class="flex-grow font-body-md font-semibold text-primary">Alcance de
                             Acreditación</span>
                         <span class="material-symbols-outlined text-outline group-hover:text-primary"
                             data-icon="download">download</span>
@@ -406,8 +405,7 @@
                     <a href="{{$urlPoliticas}}" download="Politicas.pdf"
                         class="flex items-center p-4 bg-surface-container-lowest border border-outline-variant hover:border-primary transition-colors cursor-pointer group">
                         <span class="material-symbols-outlined text-primary mr-4" data-icon="policy">policy</span>
-                        <span class="flex-grow font-body-md font-semibold text-primary">Política de la Empresa (SST
-                            &amp; Calidad)</span>
+                        <span class="flex-grow font-body-md font-semibold text-primary">Política del Sistema de Gestión del Laboratorio</span>
                         <span class="material-symbols-outlined text-outline group-hover:text-primary"
                             data-icon="download">download</span>
                     </a>
@@ -416,13 +414,13 @@
             <div class="relative p-12 bg-surface-container flex items-center justify-center">
                 <div class="absolute inset-0 border border-primary/10 m-6"></div>
                 <div
-                    class="bg-surface-container-lowest p-8 shadow-xl max-w-sm rotate-2 hover:rotate-0 transition-transform duration-500 border border-outline-variant">
+                    class="bg-surface-container-lowest shadow-xl max-w-sm rotate-2 hover:rotate-0 transition-transform duration-500 border border-outline-variant">
                     <div class="w-16 h-1 w-full bg-primary mb-4"></div>
-                    <h5 class="font-label-caps text-label-caps text-on-surface-variant mb-4">ACREDITADO POR INACAL</h5>
+                    <!-- <h5 class="font-label-caps text-label-caps text-on-surface-variant mb-4">ACREDITADO POR INACAL</h5> -->
                     <img alt="Sello de Acreditación" class="w-full grayscale mb-6"
                         src="{{ asset('storage/' . $calidad->imagen)}}" />
-                    <p class="text-[10px] font-label-caps text-outline leading-tight">
-                        LAB-GI-0129-CERTIFICADO-INTERNACIONAL</p>
+                    <!-- <p class="text-[10px] font-label-caps text-outline leading-tight">
+                        LAB-GI-0129-CERTIFICADO-INTERNACIONAL</p> -->
                 </div>
             </div>
         </div>
