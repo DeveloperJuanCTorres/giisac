@@ -234,7 +234,7 @@
                         class="absolute bottom-0 left-0 right-0 p-lg bg-surface/90 backdrop-blur-sm border-t border-outline-variant">
                         <div class="flex justify-between items-start mb-xs">
                             <span
-                                class="font-label-sm text-label-sm text-secondary uppercase tracking-tighter">Geotecnia</span>
+                                class="font-label-sm text-label-sm text-secondary uppercase tracking-tighter">{{$project->taxonomy->name}}</span>
                             <span class="font-label-sm text-label-sm text-on-surface-variant">{{$project->anio}}</span>
                         </div>
                         <h3 class="font-headline-sm text-headline-sm text-primary mb-xs">{{$project->nombre}}</h3>
