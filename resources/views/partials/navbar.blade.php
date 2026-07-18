@@ -41,7 +41,7 @@
             <li>
                 <a href="{{ route('proyectos') }}"
                     class="{{ request()->routeIs('proyectos') ? 'active' : '' }}">
-                    Proyectos
+                    Destacados
                 </a>
             </li>
 
