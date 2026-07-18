@@ -314,7 +314,7 @@
 
                 @if($urlBrochure)
                     <a href="{{ $urlBrochure }}"
-                    download
+                    download="Brochure.pdf"
                     class="border border-white/30 text-white px-xl py-md rounded-lg font-label-md text-label-md uppercase tracking-widest hover:bg-white/10 transition-colors">
                         Descargar Brochure
                     </a>
