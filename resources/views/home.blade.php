@@ -252,7 +252,7 @@
 <div class="bg-surface-container py-12 border-b border-outline-variant">
     <div class="max-w-container-max mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-8">
         <div class="flex flex-col">
-            <span class="font-display-lg text-headline-md text-primary">15+</span>
+            <span class="font-display-lg text-headline-md text-primary">30+</span>
             <span class="font-label-caps text-label-caps text-on-surface-variant">Años de Experiencia</span>
         </div>
         <div class="flex flex-col">
@@ -260,7 +260,7 @@
             <span class="font-label-caps text-label-caps text-on-surface-variant">Acreditación Vigente</span>
         </div>
         <div class="flex flex-col">
-            <span class="font-display-lg text-headline-md text-primary">500+</span>
+            <span class="font-display-lg text-headline-md text-primary">40+</span>
             <span class="font-label-caps text-label-caps text-on-surface-variant">Proyectos Ejecutados</span>
         </div>
         <div class="flex flex-col">
