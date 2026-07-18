@@ -199,29 +199,21 @@
                     Filtrar por:
                 </span>
 
+                <!-- Todos -->
                 <a href="{{ route('proyectos') }}"
-                class="filter-btn px-lg py-xs border rounded-full
-                {{ empty(request('taxonomy')) ? 'active' : '' }}">
+                    class="filter-btn px-lg py-xs border rounded-full
+                    {{ empty(request('taxonomy')) ? 'active' : '' }}">
                     Todos
                 </a>
 
-                <a href="{{ route('proyectos',['taxonomy'=>'Geotecnia']) }}"
-                class="filter-btn px-lg py-xs border rounded-full
-                {{ request('taxonomy') == 'Geotecnia' ? 'active' : '' }}">
-                    Geotecnia
-                </a>
-
-                <a href="{{ route('proyectos',['taxonomy'=>'Laboratorio']) }}"
-                class="filter-btn px-lg py-xs border rounded-full
-                {{ request('taxonomy') == 'Laboratorio' ? 'active' : '' }}">
-                    Laboratorio
-                </a>
-
-                <a href="{{ route('proyectos',['taxonomy'=>'Calibración']) }}"
-                class="filter-btn px-lg py-xs border rounded-full
-                {{ request('taxonomy') == 'Calibración' ? 'active' : '' }}">
-                    Calibración
-                </a>
+                <!-- Categorías dinámicas -->
+                @foreach($taxonomies as $taxonomy)
+                    <a href="{{ route('proyectos', ['taxonomy' => $taxonomy->nombre]) }}"
+                        class="filter-btn px-lg py-xs border rounded-full
+                        {{ request('taxonomy') == $taxonomy->nombre ? 'active' : '' }}">
+                        {{ $taxonomy->nombre }}
+                    </a>
+                @endforeach
 
             </div>
         </div>
