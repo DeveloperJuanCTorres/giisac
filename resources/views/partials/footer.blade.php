@@ -77,6 +77,9 @@
             <div class="text-white/70 space-y-2">
                 <p>{{$company->nombre}}</p>
                 <p>RUC: {{$company->ruc}}</p>
+                <p>administrador@giisac.com</p>
+                <p>laboratorio@giisac.com</p>
+                <p>geotecnia@giisac.com</p>
                 <p>© 2026 {{$company->nombre}}. Todos los derechos reservados.</p>
             </div>
             <div class="mt-4 p-4 border border-outline-variant/30 bg-white/5">
