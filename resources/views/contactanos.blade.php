@@ -164,7 +164,7 @@
 @section('content')
 
 <!-- Hero Section -->
-<section class="bg-surface py-xxl border-b border-outline-variant">
+<section class="bg-surface py-xxl border-b border-outline-variant" style="padding-top: 120px;">
     <div class="max-w-max-width mx-auto px-margin-desktop">
         <div class="max-w-3xl">
             <h1 class="font-headline-lg text-headline-lg md:text-headline-lg text-primary mb-md">
@@ -277,7 +277,8 @@
                 <!-- <form class="space-y-lg" id="contact-form"> -->
                 <form id="contact-form" class="space-y-lg"
                     action="{{ route('contact.send') }}"
-                    method="POST">
+                    method="POST"
+                    novalidate>
                     @csrf
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
                         <!-- Name -->
@@ -365,7 +366,8 @@
         <form id="trabaja-form" class="space-y-lg"
             action="{{ route('work.send') }}"
             method="POST"
-            enctype="multipart/form-data">
+            enctype="multipart/form-data"
+            novalidate>
 
             @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
@@ -377,7 +379,7 @@
                 <!-- Documento -->
                 <div class="space-y-xs">
                     <label class="font-label-md text-label-md text-primary" for="document">Documento (DNI/RUC)</label>
-                    <input class="only-numbers w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus" id="document" name="document" placeholder="Ej. 12345678" required type="text">
+                    <input class="only-numbers w-full bg-surface border border-outline-variant px-md py-sm rounded font-body-md form-input-focus" id="document" name="document" placeholder="Ej. 12345678" required type="text" maxlength="11">
                 </div>
             </div>
 

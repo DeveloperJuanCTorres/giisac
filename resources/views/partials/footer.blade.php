@@ -62,7 +62,7 @@
                 </li>
                 <li>
                     <a class="text-white/70 hover:text-secondary hover:underline transition-colors"
-                        href="{{route('proyectos')}}">Proyectos
+                        href="{{route('proyectos')}}">Destacados
                     </a>
                 </li>
                 <li>

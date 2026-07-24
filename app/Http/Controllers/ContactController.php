@@ -71,6 +71,11 @@ class ContactController extends Controller
 
             'cv' => 'required|file|mimes:pdf|max:5120',
 
+        ],
+        [
+            'experience.required' => 'Debe ingresar los años de experiencia.',
+            'experience.integer'  => 'Los años de experiencia deben ser un número.',
+            'experience.max'      => 'Los años de experiencia no pueden ser mayores a 60.',
         ]);
 
         $cv = $request->file('cv');

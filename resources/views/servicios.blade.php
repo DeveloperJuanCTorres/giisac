@@ -185,7 +185,7 @@
 </style>
 @section('content')
 
-<div class="w-full max-w-max-width mx-auto px-margin-desktop py-xxl">
+<div class="w-full max-w-max-width mx-auto px-margin-desktop pb-5" style="padding-top: 120px;">
     <!-- Hero Section -->
     <section class="mb-xxl text-left border-l-4 border-secondary pl-lg">
         <h1 class="font-headline-lg text-headline-lg text-primary mb-sm md:text-5xl">Soluciones de Ingeniería y

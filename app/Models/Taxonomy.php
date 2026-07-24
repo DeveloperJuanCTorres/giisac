@@ -19,7 +19,7 @@ class Taxonomy extends Model
         static::deleting(function ($taxonomy) {
 
             if ($taxonomy->projects()->exists()) {
-                throw new \Exception('No puede eliminar esta categoría porque tiene proyectos asociados.');
+                throw new \Exception('No puede eliminar este registro porque tiene proyectos asociados.');
             }
 
         });

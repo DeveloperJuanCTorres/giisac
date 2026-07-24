@@ -177,7 +177,7 @@
 </style>
 @section('content')
 
-<div class="flex-grow">
+<div class="flex-grow" style="padding-top: 90px;">
     <!-- Hero Section -->
     <section class="py-xxl bg-surface-container-low">
         <div class="max-w-max-width mx-auto px-margin-desktop">
@@ -228,7 +228,7 @@
                     <div class="h-full w-full overflow-hidden">
                         <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
                             data-alt="A large-scale industrial construction site featuring heavy machinery and deep excavation for foundation work. The scene is captured in clear daylight with a focus on engineering precision and structural steel. The color palette is dominated by cool blues and metallic grays, reflecting a professional and reliable technical environment."
-                            src="{{asset('storage/' . $project->imagen)}}" />
+                            src="{{ $project->imagen ? asset('storage/' . $project->imagen) : asset('images/defecto1.png') }}" />
                     </div>
                     <div
                         class="absolute bottom-0 left-0 right-0 p-lg bg-surface/90 backdrop-blur-sm border-t border-outline-variant">
