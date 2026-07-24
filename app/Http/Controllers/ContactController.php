@@ -81,6 +81,8 @@ class ContactController extends Controller
             'phone.required' => 'Debe ingresar su teléfono.',
             'phone.max'      => 'El teéfono debe tener máximo 11 digitos.',
 
+            'email.required' => 'Debe ingresar su email.',
+
             'position.required' => 'Debe ingresar el puesto deseado.',
 
             'experience.required' => 'Debe ingresar los años de experiencia.',
